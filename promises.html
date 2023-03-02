@@ -1,0 +1,38 @@
+<script>
+    let pobj1= new Promise((resolve, reject)=>{
+        let val=10;
+        //in this code, the promise will remain pending till 
+        // 5 seconds until that the for loop runs.
+        //after 5 secs, the promise is returned and handled
+        setTimeout(()=>{
+            resolve(val);
+        },5000);
+        //resolve(val);
+        //reject("this is a reject state");
+    });
+    //traditional way of handling promises
+    pobj1.then((parameter)=>{
+       console.log(parameter);
+    }).catch((error)=>{
+        console.log(error);
+    });
+
+    async function myFunc(){
+        const data= await pobj1;
+        console.log(data);
+        return data;
+    }
+    var ans=myFunc();
+    console.log(ans);
+    
+    //trying to block the main thread
+    for(var i=0;i<10;i++){
+      print(i);
+    }
+
+    function print(i){
+        setTimeout(()=>{
+            console.log(i);
+        },i*1000);
+    }
+</script>

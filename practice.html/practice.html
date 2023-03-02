@@ -1,0 +1,16 @@
+<script>
+    var pobj=new Promise((resolve,reject)=>{
+       setTimeout(()=>{
+        resolve(5);
+       },3000); 
+    })
+
+    async function myFunc(){
+        var value=await pobj;
+        console.log(value);
+    }
+    myFunc();
+    for(var i=0;i<10;i++){
+        console.log(i);
+    }
+</script>
